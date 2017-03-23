@@ -16,9 +16,9 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: myapp_development
+  database: mb
   pool:     5
-  username: mb
+  username: postgres
   password: password
   template: template0
 
