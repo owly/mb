@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>List of Posts</h3><BR>
+  <%= link_to 'Create Post', new_post_path, :class=>"btn btn-large" %>
+
+  <% @posts.each do |post| %>
+  <div class="well">
+    <div class="media">
+      <div class="media-body">
+  	  	<h4 class="media-heading"><%= link_to post.title, post %></h4>
+        <p class="text-right">By <%= link_to post.user.name, post.user if post.user %></p>
+        <p><%= post.body %></p>
+        <ul class="list-inline list-unstyled">
+    			<li><span><i class="glyphicon glyphicon-calendar"></i> <%= time_ago_in_words(post.created_at)  %> ago</span></li>
+          <li>|</li>
+          <span><i class="glyphicon glyphicon-comment"></i> <%= pluralize(post.comments.size, 'comment') %></span>
+  			</ul>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

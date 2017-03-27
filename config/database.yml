@@ -44,9 +44,9 @@ test:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: myapp_test
+  database: mb_test
   pool:     5
-  username: mb
+  username: ubuntu
   password: password
   template: template0
 

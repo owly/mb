@@ -1,0 +1,39 @@
+<p>
+  <strong>Created:<%= time_ago_in_words(@post.created_at) %> ago</strong>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @post.body %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @post.user.name if @post.user%>
+</p>
+
+<BR>
+
+<%= render :partial => '/comments/comment_list', locals: {comments: @post.comments} %>
+
+
+Add comment:<BR>
+<%= form_for(Comment.new) do |f| %>
+		<%= hidden_field_tag 'post_id', @post.id %>
+	    <!--<div id="error_explanation"></div>-->
+			<%= f.text_area :body, :rows => 3, :style =>"min-width: 90%" %>
+		  </div>
+		  <div class="actions">
+			<%= f.submit "Add Comment", {:class=>"btn btn-default"} %>
+		  </div>
+<% end %>
+		
+
+
+<%= link_to 'Edit', edit_post_path(@post) if current_user and @post.user_id == current_user.id %> |
+<%= link_to 'Back', posts_path %> |

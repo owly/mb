@@ -1,0 +1,10 @@
+<% comments.each do |comment| %>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= link_to comment.user.name, comment.user if comment.user %>  -- Comment left <%= time_ago_in_words(comment.created_at)  %> ago:</div>
+  <div class="panel-body">
+        <%= comment.body %>
+  </div>
+</div>
+
+<hr>        
+<% end %>
